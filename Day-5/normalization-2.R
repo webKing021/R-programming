@@ -1,5 +1,7 @@
 d = datasets::Orange
 d
+
+# min-max
 x = (d$age - min(d$age)) / (max(d$age) - min(d$age))
 x
 

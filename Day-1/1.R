@@ -34,12 +34,14 @@ df = data.frame("rno" = 1:3, "name" = c("a","b","c"), "color"=c("red","blue","gr
 df
 
 
-# LOOPS : 
+# LOOPS :
+# FOR
 for (i in c(1:5))
 {
   print(i)
 }
 
+# WHILE:
 i=1
 while(i<=3)
 {

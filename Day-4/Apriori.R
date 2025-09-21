@@ -1,6 +1,4 @@
-d <- read.transactions("D:\\Krutarth\\SEM-5\\Data-Mining\\Day-4\\ap.csv", 
-                       format = "basket", 
-                       sep = ",")
+d <- read.transactions("D:\\Krutarth\\SEM-5\\Data-Mining\\Day-4\\ap.csv", format = "basket", sep = ",")
 
 rules <- apriori(d, parameter = list(supp = 0.05, conf = 0.02))
 rules

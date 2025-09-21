@@ -12,9 +12,10 @@ x_norm<-(x - min(x)) / (max(x) - min(x))
 x_norm
 
 
-
 # Z-SCORE
 x_std<-scale(x)
 x_std
 
 # Decimal-scaling
+x_dec <- x / 100
+x_dec

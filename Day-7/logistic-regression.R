@@ -1,17 +1,23 @@
 library(ROCR)
 library(caTools)
 
+# Load dataset
 d = datasets::mtcars
-split = sample.split(d, SplitRatio = 0.8)
-training_set = subset(d, split == TRUE)
-test_set = subset(d, split == FALSE)
 
-logistic_model = glm(vs ~ wt + disp, data = training_set, family = "binomial")
-logistic_model
-summary(logistic_model)
+# Split dataset correctly
+split = sample.split(d$vs, SplitRatio = 0.8)
+tr = subset(d, split == TRUE)
+ts = subset(d, split == FALSE)
 
-predict_reg = predict(logistic_model, test_set, type = "response")
-predict_reg
+# Logistic regression model
+logm = glm(vs ~ wt + disp, data = tr, family = "binomial")
+summary(logm)
 
-predict_reg = ifelse(predict_reg > 0.5, 1, 0)
-table(test_set$vs, predict_reg)
+# Predict probabilities
+predreg = predict(logm, ts, type = "response")
+
+# Convert probabilities to 0/1
+pred_class = ifelse(predreg > 0.5, 1, 0)
+
+# Confusion matrix
+table(Actual = ts$vs, Predicted = pred_class)
